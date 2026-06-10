@@ -10,7 +10,7 @@ The main goal of this project is to support students in making better scholarshi
 
 Many students face difficulties in finding scholarships that match their academic background, financial condition, programme of study, and co-curricular involvement. Scholarship information is often scattered across different platforms, making it time-consuming for students to compare available opportunities.
 
-ScholarMatch aims to solve this problem by providing a web-based recommendation system where students can enter their details and receive a suggested scholarship option. The system collects basic student information such as CGPA, family income, co-curricular score, programme of study, and year of study. These inputs are processed by a Machine Learning model to predict a suitable scholarship category.
+ScholarMatch aims to solve this problem by providing a web-based recommendation system where students can enter their details and receive a suggested scholarship option. The system collects basic student information such as GPA, family income, co-curricular score, programme of study, and year of study. These inputs are processed by a Machine Learning model to predict a suitable scholarship category.
 
 This project is developed as a Flask-based web application, where the main system runs through `app.py`. The HTML pages are stored inside the `templates/` folder, while images, CSS files, and other static assets are stored inside the `static/` folder.
 
@@ -68,7 +68,7 @@ This project uses a **Decision Tree Classifier** as the Machine Learning model.
 
 The model is trained using student-related attributes such as:
 
-* CGPA
+* GPA
 * Family income
 * Co-curricular score
 * Programme of study
@@ -228,7 +228,7 @@ The dataset used for training and testing is **not included** in this repository
 
 The dataset has been removed to protect participant privacy and avoid exposing sensitive student-related information. The original dataset may contain details such as:
 
-- CGPA
+- GPA
 - Family income
 - Programme of study
 - Year of study
@@ -334,7 +334,7 @@ The system works through the following steps:
 1. The user opens the ScholarMatch web application.
 2. The user views scholarship information pages such as MARA, PTPTN, and JPA.
 3. The user goes to the ScholarMatch Finder page.
-4. The user enters details such as CGPA, family income, co-curricular score, programme, and year of study.
+4. The user enters details such as GPA, family income, co-curricular score, programme, and year of study.
 5. The input is submitted to the Flask backend.
 6. The Machine Learning model processes the input.
 7. The system predicts a suitable scholarship category.
@@ -347,7 +347,7 @@ The system works through the following steps:
 Example input entered by the user:
 
 ```text
-CGPA: 3.75
+GPA: 3.75
 Family Income: RM1800
 Co-curricular Score: 8
 Programme: IT
