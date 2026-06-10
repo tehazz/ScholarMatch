@@ -89,7 +89,6 @@ ScholarMatch/
 │
 ├── app.py
 ├── requirements.txt
-├── sample_dataset.csv
 ├── README.md
 ├── .gitignore
 │
@@ -222,46 +221,26 @@ pip install -r requirements.txt
 
 ---
 
-### `sample_dataset.csv`
-
-The `sample_dataset.csv` file contains dummy data used to demonstrate the expected dataset format. It is not the real dataset used for actual training or testing.
-
-This sample file helps users understand what type of data is required by the system.
-
-Example format:
-
-```csv
-cgpa,income,extracurricular,programme,year,scholarship
-3.75,1800,8,IT,2,MARA
-3.40,3200,6,Business,1,PTPTN
-3.90,2500,9,Engineering,3,JPA
-```
-
----
-
 ## Dataset Notice
 
-The original dataset used for training and testing is **not included** in this repository to protect participant privacy.
+The dataset used for training and testing is **not included** in this repository.
 
-The actual dataset may contain sensitive student-related information such as:
+The dataset has been removed to protect participant privacy and avoid exposing sensitive student-related information. The original dataset may contain details such as:
 
-* CGPA
-* Family income
-* Programme of study
-* Year of study
-* Co-curricular score
-* Scholarship eligibility information
+- CGPA
+- Family income
+- Programme of study
+- Year of study
+- Co-curricular score
+- Scholarship recommendation category
 
-To avoid exposing private or sensitive data, only a **sample dataset with dummy records** is included in this repository.
+Because this information is related to student profiles, it should not be publicly uploaded to GitHub.
 
-The sample dataset is provided only to demonstrate:
+This repository only contains the source code and system files needed to demonstrate the structure and implementation of the ScholarMatch project.
 
-* The expected dataset format.
-* The type of attributes used by the system.
-* How the Machine Learning model processes input data.
-* The general workflow of the recommendation system.
+Users who want to run or test the Machine Learning function will need to prepare their own dataset using the same input format required by the system.
 
-Real participant data should not be uploaded to GitHub.
+---
 
 If real data is used during development, it should be stored locally and excluded from the repository using `.gitignore`.
 
@@ -430,8 +409,9 @@ ScholarMatch is intended as a prototype system and should be improved further be
 Developed by:
 
 ```text
-Your Name
-Final Year Project
+Nurfatihah Hamzah
+Final Year Project, Semester 2, 2025/2026
+Supervised by Asst. Prof. Dr. Takumi Sase
 Kulliyyah of Information and Communication Technology
 International Islamic University Malaysia
 ```
