@@ -327,6 +327,12 @@ Open the link in a web browser to use ScholarMatch.
 
 ---
 
+## Important Note
+
+The recommendation function may require the model to be trained first before running the Flask application. Since the dataset and `.pkl` files are not included, users need to prepare their own dataset and run the training script to generate the required model files.
+
+---
+
 ## How the System Works
 
 The system works through the following steps:
