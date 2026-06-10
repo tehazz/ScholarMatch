@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .hero {
+    background:
+      linear-gradient(rgba(20,61,51,0.88), rgba(31,77,63,0.88)),
+      url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1400");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 90px 35px;
+    border-radius: 24px;
+    text-align: center;
+    margin-bottom: 45px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  }
+
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 54px;
+    margin-bottom: 15px;
+  }
+
+  .hero p {
+    max-width: 780px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .about-section {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+    align-items: stretch;
+    margin-top: 40px;
+  }
+
+  .notice-card {
+    background: #eaf5f1;
+    border-left: 6px solid #1f4d3f;
+  }
+
+  .process-list {
+    list-style: none;
+    margin-top: 15px;
+  }
+
+  .process-list li {
+    margin-bottom: 14px;
+    padding-left: 34px;
+    position: relative;
+  }
+
+  .process-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #1f4d3f;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+  }
+
+  .stat-box {
+    background: linear-gradient(135deg, #143d33, #1f4d3f);
+    color: white;
+    padding: 26px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 7px 18px rgba(0,0,0,0.12);
+  }
+
+  .stat-box h2 {
+    color: #d4af37;
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  @media(max-width: 850px) {
+    .hero h1 {
+      font-size: 38px;
+    }
+
+    .about-section {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="hero">
+  <h1>ScholarMatch</h1>
+  <p>
+    A student-friendly scholarship recommendation platform for IIUM students.
+    ScholarMatch helps you explore suitable financial assistance based on your
+    academic profile, household income, co-curricular involvement, kulliyyah, and year of study.
+  </p>
+
+  <div class="hero-actions">
+    <a href="{{ url_for('recommendation') }}" class="btn">Start Recommendation</a>
+    <a href="{{ url_for('scholar') }}" class="btn btn-green">View Scholarship List</a>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Welcome to ScholarMatch</h2>
+  <p class="subtitle">
+    This system is designed to make scholarship searching easier for students. Instead of reading many separate websites,
+    students can use ScholarMatch as a starting point to understand possible scholarship options.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <i class="fas fa-lightbulb info-icon"></i>
+      <h3>Smart Recommendation</h3>
+      <p>
+        ScholarMatch studies your student profile and suggests a scholarship that may suit your background.
+      </p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-user-graduate info-icon"></i>
+      <h3>Student-Friendly</h3>
+      <p>
+        The page uses simple questions such as GPA, income, COCU score, kulliyyah, and year of study.
+      </p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-hand-holding-usd info-icon"></i>
+      <h3>Financial Aid Information</h3>
+      <p>
+        Students can read basic information about MARA, PTPTN, JPA, and other scholarship opportunities.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="card notice-card">
+    <span class="badge">About This System</span>
+    <h3>What does ScholarMatch do?</h3>
+    <p>
+      ScholarMatch helps students receive a suggested scholarship option based on information they provide.
+      The current recommendation model focuses on three main options: MARA, PTPTN, and JPA.
+    </p>
+    <br>
+    <p>
+      Additional scholarship opportunities for Malaysian and international students are listed on the
+      IIUM Scholarships page as references.
+    </p>
+  </div>
+
+  <div class="card">
+    <span class="badge badge-gold">How It Works</span>
+    <h3>Simple Process</h3>
+    <ul class="process-list">
+      <li>Student enters profile information.</li>
+      <li>The system processes the submitted details.</li>
+      <li>The trained recommendation model suggests a scholarship.</li>
+      <li>The student can view more scholarship details and references.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat-box">
+    <h2>70</h2>
+    <p>Training Records</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>30</h2>
+    <p>Testing Records</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>3</h2>
+    <p>Main Recommendations</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>IIUM</h2>
+    <p>Student Focus</p>
+  </div>
+</section>
+
+{% endblock %}

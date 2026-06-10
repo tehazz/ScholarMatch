@@ -1,0 +1,623 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .guide-box {
+    background: #eaf5f1;
+    border-left: 6px solid #1f4d3f;
+  }
+
+  .finder-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.35fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .result-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    min-height: 320px;
+  }
+
+  .result-success {
+    border-left: 7px solid #1f4d3f;
+    background: #eef8f4;
+  }
+
+  .result-warning {
+    border-left: 7px solid #c28f2c;
+    background: #fff8e8;
+  }
+
+  .big-result {
+    font-size: 42px;
+    color: #1f4d3f;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 0 15px;
+  }
+
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .spinner {
+    border: 5px solid #ddd;
+    border-top: 5px solid #1f4d3f;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+  }
+
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .note-text {
+    font-size: 13px;
+    color: #666;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  .profile-summary {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    margin-top: 18px;
+  }
+
+  .profile-summary p {
+    margin-bottom: 7px;
+  }
+
+  /* ================================
+     RESULT + AI FIGURE
+  ================================= */
+
+  .result-top-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 22px;
+    margin-top: 18px;
+    align-items: stretch;
+  }
+
+  .main-output-box {
+    background: white;
+    border-radius: 16px;
+    padding: 22px;
+    border: 1px solid #dce7e2;
+  }
+
+  .main-output-box h4 {
+    color: #1f4d3f;
+    margin-bottom: 10px;
+  }
+
+  .confidence-small {
+    background: #fff8e8;
+    border-left: 5px solid #c28f2c;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  .ai-figure-box {
+    background: white;
+    border: 1px solid #dce7e2;
+    border-radius: 16px;
+    padding: 22px;
+  }
+
+  .ai-figure-box h4 {
+    color: #1f4d3f;
+    margin-bottom: 10px;
+  }
+
+  .ai-flow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .ai-step {
+    background: #f8fbfa;
+    border: 2px solid #1f4d3f;
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .ai-step strong {
+    color: #1f4d3f;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .ai-arrow {
+    text-align: center;
+    color: #1f4d3f;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .ai-step.output-step {
+    background: #fff8e8;
+    border-color: #c28f2c;
+  }
+
+  .ai-step.output-step h3 {
+    color: #1f4d3f;
+    font-size: 28px;
+    margin: 5px 0 0;
+  }
+
+  /* ================================
+     OTHER SCHOLARSHIPS
+  ================================= */
+
+  .mini-scholarship-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .mini-scholarship-card {
+    background: white;
+    border-left: 5px solid #c28f2c;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  }
+
+  .mini-scholarship-card h4 {
+    color: #1f4d3f;
+    margin-bottom: 8px;
+  }
+
+  .mini-scholarship-card p {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .mini-scholarship-card a {
+    color: #0066cc;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .mini-scholarship-card a:hover {
+    text-decoration: underline;
+  }
+
+  @media(max-width: 1100px) {
+    .finder-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .result-top-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<h2 class="section-title">ScholarMatch Finder</h2>
+
+<p class="subtitle">
+  Fill in your student profile below. ScholarMatch will compare your details with the trained recommendation model
+  and suggest a suitable scholarship option. This result is only a guide, so students are still encouraged to check
+  the official scholarship requirements.
+</p>
+
+<div class="card guide-box">
+  <h3>How to use this page</h3>
+  <p>
+    Enter your GPA, monthly household income, COCU score, kulliyyah, and year of study.
+    The system will then suggest one main scholarship and show other scholarships you may also explore.
+  </p>
+</div>
+
+<div class="finder-layout">
+
+  <div class="form-card">
+    <span class="badge">Student Profile Input</span>
+    <h3>Tell us about your profile</h3>
+    <br>
+
+    <label>GPA</label>
+    <input id="gpa" type="number" step="0.01" min="0" max="4.0" placeholder="Example: 3.50">
+    <p class="helper-text">Enter your latest CGPA. The maximum value is 4.00.</p>
+
+    <label>Monthly Household Income (RM)</label>
+    <input id="income" type="number" min="0" placeholder="Example: 2500">
+    <p class="helper-text">Enter your total family monthly income in Ringgit Malaysia.</p>
+
+    <label>COCU Score</label>
+    <input id="cocu" type="number" step="0.1" min="0" max="10" placeholder="Example: 7.5">
+    <p class="helper-text">COCU means co-curricular involvement. Use a score from 0 to 10.</p>
+
+    <label>Kulliyyah</label>
+    <select id="kulliyyah">
+      <option value="KICT">KICT - Information and Communication Technology</option>
+      <option value="KENMS">KENMS - Economics and Management Sciences</option>
+      <option value="KOE">KOE - Engineering</option>
+      <option value="AIKOL">AIKOL - Law</option>
+      <option value="KIRKHS">KIRKHS - Islamic Revealed Knowledge and Human Sciences</option>
+      <option value="KAED">KAED - Architecture and Environmental Design</option>
+      <option value="KOED">KOED - Education</option>
+      <option value="CELPAD">CELPAD - Languages and Pre-University Development</option>
+    </select>
+    <p class="helper-text">Choose your kulliyyah or the closest related academic centre.</p>
+
+    <label>Year of Study</label>
+    <select id="year">
+      <option value="1">Year 1</option>
+      <option value="2">Year 2</option>
+      <option value="3">Year 3</option>
+      <option value="4">Year 4</option>
+    </select>
+    <p class="helper-text">Select your current year of study.</p>
+
+    <button class="btn btn-green" onclick="getRecommendation()">
+      Generate Recommendation
+    </button>
+  </div>
+
+  <div class="result-card" id="resultBox">
+    <h3>Scholarship Match Result</h3>
+    <p class="subtitle">
+      Your result will appear here after submitting the form.
+    </p>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Analyzing student profile...</p>
+    </div>
+
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+
+<script>
+function getIncomeLevel(income) {
+  if (income < 2500) {
+    return "B40 (Low Income)";
+  } else if (income < 6000) {
+    return "M40 (Middle Income)";
+  } else {
+    return "T20 (High Income)";
+  }
+}
+
+function getScholarshipLink(prediction) {
+  if (prediction === "MARA") {
+    return "/mara";
+  } else if (prediction === "PTPTN") {
+    return "/ptptn";
+  } else if (prediction === "JPA") {
+    return "/jpa";
+  } else {
+    return "/scholar";
+  }
+}
+
+function getExplanation(gpa, income, cocu, prediction) {
+  let explanation = "";
+
+  if (prediction === "JPA") {
+    explanation = "The system suggests JPA because the student profile shows strong academic performance and competitive overall suitability.";
+  } else if (prediction === "MARA") {
+    explanation = "The system suggests MARA because the student profile shows balanced academic performance and financial support suitability.";
+  } else if (prediction === "PTPTN") {
+    explanation = "The system suggests PTPTN because the student profile is suitable for general education financial assistance.";
+  } else {
+    explanation = "The system generated this suggestion based on the student profile and trained dataset.";
+  }
+
+  if (gpa >= 3.7) {
+    explanation += " A high GPA contributes positively to the suggestion.";
+  }
+
+  if (income < 2500) {
+    explanation += " Lower household income also increases financial aid relevance.";
+  }
+
+  if (cocu >= 7) {
+    explanation += " Strong COCU involvement strengthens the profile.";
+  }
+
+  return explanation;
+}
+
+function buildAIResultFigure(data) {
+  return `
+    <div class="ai-figure-box">
+      <h4>How This Result Was Generated</h4>
+
+      <div class="ai-flow">
+
+        <div class="ai-step">
+          <strong>1. Student Input</strong>
+          GPA, Income, COCU, Kulliyyah, and Year
+        </div>
+
+        <div class="ai-arrow">↓</div>
+
+        <div class="ai-step">
+          <strong>2. Preprocessing</strong>
+          Input is converted into the same format used during training
+        </div>
+
+        <div class="ai-arrow">↓</div>
+
+        <div class="ai-step">
+          <strong>3. Trained Decision Tree Model</strong>
+          Model loaded from <em>${data.model_evidence.model_file}</em>
+        </div>
+
+        <div class="ai-arrow">↓</div>
+
+        <div class="ai-step output-step">
+          <strong>4. Prediction Output</strong>
+          <h3>${data.prediction}</h3>
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+
+function getOtherScholarships(prediction, income, kulliyyah) {
+  let scholarships = [];
+
+  scholarships.push({
+    name: "IIUM Financial Assistance",
+    description: "University-related financial aid support that may be available for eligible IIUM students.",
+    link: "https://www.iium.edu.my"
+  });
+
+  if (income < 3000) {
+    scholarships.push({
+      name: "Yayasan Bank Rakyat",
+      description: "Financial support opportunity that may suit students from lower-income backgrounds.",
+      link: "#"
+    });
+
+    scholarships.push({
+      name: "Bantuan Kewangan OKU",
+      description: "Financial assistance reference for eligible students with disabilities.",
+      link: "#"
+    });
+  }
+
+  if (kulliyyah === "KOE" || kulliyyah === "KICT") {
+    scholarships.push({
+      name: "PETRONAS Education Sponsorship",
+      description: "Suitable reference for students in engineering, technology, and related fields.",
+      link: "https://www.petronas.com"
+    });
+
+    scholarships.push({
+      name: "Yayasan Telekom Malaysia",
+      description: "Scholarship reference for students in technology, IT, and related study areas.",
+      link: "#"
+    });
+  }
+
+  if (kulliyyah === "KENMS") {
+    scholarships.push({
+      name: "Bank Negara Malaysia Scholarship",
+      description: "Suitable reference for students in economics, finance, business, and related fields.",
+      link: "https://www.bnm.gov.my"
+    });
+
+    scholarships.push({
+      name: "Maybank Group Scholarship",
+      description: "Corporate scholarship reference for students with strong academic and leadership potential.",
+      link: "#"
+    });
+  }
+
+  if (kulliyyah === "AIKOL") {
+    scholarships.push({
+      name: "Yayasan Khazanah Scholarship",
+      description: "Competitive scholarship reference for high-achieving students in selected disciplines.",
+      link: "https://www.yayasankhazanah.com.my"
+    });
+  }
+
+  if (kulliyyah === "KOED" || kulliyyah === "KIRKHS") {
+    scholarships.push({
+      name: "Jabatan Kemajuan Islam Malaysia (JAKIM)",
+      description: "Reference for eligible students in Islamic studies and related areas.",
+      link: "#"
+    });
+  }
+
+  if (kulliyyah === "KAED") {
+    scholarships.push({
+      name: "Yayasan Gamuda",
+      description: "Scholarship reference suitable for students in built environment, engineering, and related areas.",
+      link: "#"
+    });
+  }
+
+  scholarships.push({
+    name: "Yayasan Sime Darby",
+    description: "Scholarship reference for students with good academic performance and leadership potential.",
+    link: "https://www.yayasansimedarby.com"
+  });
+
+  scholarships.push({
+    name: "Yayasan Selangor",
+    description: "State-based scholarship or financial aid reference for eligible students.",
+    link: "#"
+  });
+
+  let uniqueScholarships = [];
+  let names = new Set();
+
+  scholarships.forEach(s => {
+    if (s.name !== prediction && !names.has(s.name)) {
+      uniqueScholarships.push(s);
+      names.add(s.name);
+    }
+  });
+
+  return uniqueScholarships.slice(0, 4);
+}
+
+async function getRecommendation() {
+  const gpa = parseFloat(document.getElementById("gpa").value);
+  const income = parseFloat(document.getElementById("income").value);
+  const cocu = parseFloat(document.getElementById("cocu").value);
+  const kulliyyah = document.getElementById("kulliyyah").value;
+  const year = parseInt(document.getElementById("year").value);
+
+  if (isNaN(gpa) || isNaN(income) || isNaN(cocu) || isNaN(year)) {
+    alert("Please fill in all fields before generating recommendation.");
+    return;
+  }
+
+  if (gpa < 0 || gpa > 4.0) {
+    alert("GPA must be between 0.00 and 4.00.");
+    return;
+  }
+
+  if (cocu < 0 || cocu > 10) {
+    alert("COCU score must be between 0 and 10.");
+    return;
+  }
+
+  document.getElementById("loading").style.display = "block";
+  document.getElementById("resultContent").innerHTML = "";
+  document.getElementById("resultBox").className = "result-card result-warning";
+
+  try {
+    const response = await fetch("/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        GPA: gpa,
+        Income: income,
+        COCU: cocu,
+        Kulliyyah: kulliyyah,
+        Year: year
+      })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("loading").style.display = "none";
+
+    if (data.error) {
+      document.getElementById("resultContent").innerHTML = `
+        <h3>Prediction Error</h3>
+        <p>${data.error}</p>
+      `;
+      return;
+    }
+
+    const incomeLevel = getIncomeLevel(income);
+    const explanation = getExplanation(gpa, income, cocu, data.prediction);
+    const scholarshipLink = getScholarshipLink(data.prediction);
+    const otherScholarships = getOtherScholarships(data.prediction, income, kulliyyah);
+
+    document.getElementById("resultBox").className = "result-card result-success";
+
+    document.getElementById("resultContent").innerHTML = `
+      <span class="badge">Best Match Based on Your Profile</span>
+
+      <div class="result-top-grid">
+
+        <div class="main-output-box">
+          <h4>Your Suggested Scholarship</h4>
+          <div class="big-result">${data.prediction}</div>
+
+          <div class="confidence-small">
+            <strong>Matching Confidence:</strong> ${data.confidence}%<br>
+            <span class="note-text">Guide only, not an official approval result.</span>
+          </div>
+
+          <div class="profile-summary">
+            <p><strong>Income Category:</strong> ${incomeLevel}</p>
+            <p><strong>Kulliyyah:</strong> ${kulliyyah}</p>
+            <p><strong>Year:</strong> ${year}</p>
+          </div>
+
+          <br>
+
+          <a href="${scholarshipLink}" class="btn">
+            View ${data.prediction} Details
+          </a>
+        </div>
+
+        ${buildAIResultFigure(data)}
+
+      </div>
+
+      <br>
+
+      <h3>Why this scholarship?</h3>
+      <p>${explanation}</p>
+
+      <br>
+
+      <span class="badge badge-gold">Additional Options</span>
+      <h3>Other Scholarships You May Also Explore</h3>
+      <p class="note-text">
+        These are additional scholarship references based on general student background, field of study, or financial need.
+        They are not the main machine learning result.
+      </p>
+
+      <div class="mini-scholarship-list">
+        ${otherScholarships.map(s => `
+          <div class="mini-scholarship-card">
+            <h4>${s.name}</h4>
+            <p>${s.description}</p>
+            <a href="${s.link}" target="_blank">View Details</a>
+          </div>
+        `).join("")}
+      </div>
+
+      <br>
+
+      <a href="/scholar" class="btn btn-green">
+        View All Scholarship References
+      </a>
+    `;
+
+  } catch (error) {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("resultContent").innerHTML = `
+      <h3>Connection Error</h3>
+      <p>Unable to connect to the backend recommendation system.</p>
+    `;
+  }
+}
+</script>
+
+{% endblock %}

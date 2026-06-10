@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .scholar-hero {
+    background: linear-gradient(rgba(31,77,63,0.88), rgba(31,77,63,0.88)),
+                url("{{ url_for('static', filename='jpa.png') }}");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 70px 35px;
+    border-radius: 18px;
+    margin-bottom: 35px;
+  }
+
+  .scholar-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #c28f2c;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .info-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+  }
+
+  .doc-list li,
+  .check-list li {
+    margin-bottom: 10px;
+  }
+
+  .notice-box {
+    background: #eef8f4;
+    border-left: 6px solid #1f4d3f;
+  }
+
+  @media(max-width: 850px) {
+    .info-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="scholar-hero">
+  <span class="tag">Government Scholarship</span>
+  <h1>JPA Scholarship</h1>
+  <p>
+    JPA scholarship opportunities are generally competitive and often target students with strong academic achievement and leadership potential.
+  </p>
+</section>
+
+<div class="info-layout">
+
+  <div>
+    <div class="card notice-box">
+      <h3>Announcement</h3>
+      <p>
+        JPA scholarship applications are usually competitive and may depend on academic excellence,
+        leadership qualities, selected fields of study, and current government sponsorship policies.
+        Students should refer to the official JPA portal for updated application announcements.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>General Eligibility</h3>
+      <ul class="check-list">
+        <li>Strong academic performance.</li>
+        <li>Active leadership or co-curricular involvement may strengthen the application.</li>
+        <li>Must meet programme or field requirements set by JPA.</li>
+        <li>Must submit accurate academic and personal documentation.</li>
+        <li>Subject to current JPA scholarship terms and conditions.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Required Documents</h3>
+      <ul class="doc-list">
+        <li>Copy of identification card.</li>
+        <li>Academic transcript or latest result slip.</li>
+        <li>University offer letter or study confirmation letter.</li>
+        <li>Co-curricular and leadership certificates.</li>
+        <li>Any additional documents requested by JPA.</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h3>Scholarship Summary</h3>
+      <p><strong>Provider:</strong> JPA</p>
+      <p><strong>Type:</strong> Government scholarship / sponsorship</p>
+      <p><strong>Focus:</strong> Academic excellence and competitive student profile</p>
+      <p><strong>Suitable For:</strong> High-achieving students</p>
+    </div>
+
+    <div class="card">
+      <h3>Official Link</h3>
+      <p>
+        Visit the official JPA website for the latest application details.
+      </p>
+      <a href="https://www.jpa.gov.my" target="_blank" class="btn">
+        Visit JPA Website
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Try Recommendation</h3>
+      <p>
+        Check whether JPA is suitable for your student profile.
+      </p>
+      <a href="{{ url_for('recommendation') }}" class="btn btn-green">
+        Use ScholarMatch Finder
+      </a>
+    </div>
+  </aside>
+
+</div>
+
+{% endblock %}

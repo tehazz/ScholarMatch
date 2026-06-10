@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ScholarMatch | IIUM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --green-dark: #143d33;
+      --green-main: #1f4d3f;
+      --green-soft: #eaf5f1;
+      --gold-main: #c99a2e;
+      --gold-soft: #fff6df;
+      --cream: #f8f6f0;
+      --text-main: #24332f;
+      --text-muted: #6b7280;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--green-dark), var(--green-main));
+      color: white;
+      padding: 18px 42px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .top-bar {
+      max-width: 1320px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      background: white;
+      border-radius: 16px;
+      padding: 5px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    }
+
+    .brand-text h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .brand-text p {
+      font-size: 12px;
+      opacity: 0.88;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      transition: 0.25s ease;
+    }
+
+    nav a:hover {
+      background: var(--gold-main);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 45px 25px;
+      min-height: 72vh;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 26px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .card h3 {
+      color: var(--green-main);
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--green-main);
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      margin-bottom: 26px;
+      max-width: 850px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold-main);
+      color: white;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      background: #a97921;
+      transform: translateY(-2px);
+    }
+
+    .btn-green {
+      background: var(--green-main);
+    }
+
+    .btn-green:hover {
+      background: var(--green-dark);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-main);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .badge-gold {
+      background: var(--gold-soft);
+      color: #8a620e;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px 14px;
+      margin-top: 7px;
+      margin-bottom: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 15px;
+      background: white;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--green-main);
+      box-shadow: 0 0 0 3px rgba(31,77,63,0.12);
+    }
+
+    label {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .helper-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 17px;
+    }
+
+    .info-icon {
+      font-size: 34px;
+      color: var(--green-main);
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: var(--green-dark);
+      color: white;
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 18px 25px;
+      }
+
+      .top-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 520px) {
+      nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+
+      nav a {
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .brand {
+        flex-direction: column;
+      }
+
+      .section-title {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="top-bar">
+
+    <div class="brand">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="ScholarMatch Logo">
+      <div class="brand-text">
+        <h2>ScholarMatch</h2>
+        <p>IIUM Scholarship Recommendation System</p>
+      </div>
+    </div>
+
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('mara') }}">MARA</a>
+      <a href="{{ url_for('ptptn') }}">PTPTN</a>
+      <a href="{{ url_for('jpa') }}">JPA</a>
+      <a href="{{ url_for('scholar') }}">IIUM Scholarships</a>
+      <a href="{{ url_for('recommendation') }}">Finder</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="container">
+  {% block content %}
+  {% endblock %}
+</main>
+
+<footer>
+  <p>© 2026 ScholarMatch | International Islamic University Malaysia</p>
+  <p>Final Year Project 2 | Data-Driven Scholarship Recommendation System</p>
+</footer>
+
+</body>
+</html>

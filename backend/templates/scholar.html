@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1f4d3f, #2f6b59);
+    color: white;
+    padding: 60px 35px;
+    border-radius: 18px;
+    margin-bottom: 35px;
+  }
+
+  .page-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+
+  .page-hero p {
+    max-width: 850px;
+    line-height: 1.8;
+  }
+
+  .note-box {
+    background: #fff8e8;
+    border-left: 6px solid #c28f2c;
+  }
+
+  .scholar-section {
+    margin-top: 35px;
+  }
+
+  .scholar-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1f4d3f;
+    margin-bottom: 15px;
+  }
+
+  .scholar-list-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+  }
+
+  .two-column-list {
+    columns: 2;
+    column-gap: 55px;
+    padding-left: 20px;
+  }
+
+  .two-column-list li,
+  .single-list li {
+    margin-bottom: 10px;
+    break-inside: avoid;
+  }
+
+  .two-column-list a,
+  .single-list a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .two-column-list a:hover,
+  .single-list a:hover {
+    text-decoration: underline;
+  }
+
+  .section-label {
+    display: inline-block;
+    background: #eef8f4;
+    color: #1f4d3f;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+  }
+
+  .info-card {
+    border-top: 6px solid #1f4d3f;
+  }
+
+  .small-note {
+    color: #666;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  @media(max-width: 800px) {
+    .two-column-list {
+      columns: 1;
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+    }
+  }
+</style>
+
+<section class="page-hero">
+  <h1>IIUM Scholarship Opportunities</h1>
+  <p>
+    This page provides a centralized reference list of financial assistance and sponsors
+    available for IIUM students. The ScholarMatch machine learning recommendation model
+    currently focuses on MARA, PTPTN, and JPA, while the scholarships listed on this page
+    are provided as additional references for Malaysian and international students.
+  </p>
+</section>
+
+<div class="card note-box">
+  <h3>Important Note</h3>
+  <p>
+    The scholarships listed here are provided as reference links only. Students are advised
+    to visit the official scholarship provider websites or consult the IIUM finance division
+    for the latest application requirements, deadlines, and eligibility details.
+  </p>
+</div>
+
+<div class="scholar-list-box">
+  <ul class="two-column-list">
+    <li><a href="https://www.ptptn.gov.my" target="_blank" rel="noopener noreferrer">Perbadanan Tabung Pendidikan Tinggi Nasional (PTPTN) Loan</a></li>
+    <li><a href="https://penajaan.jpa.gov.my/" target="_blank" rel="noopener noreferrer">Jabatan Perkhidmatan Awam (JPA) Scholarship / Loan</a></li>
+    <li><a href="https://www.mosti.gov.my/en/" target="_blank" rel="noopener noreferrer">Ministry of Science, Technology and Innovation</a></li>
+    <li><a href="https://yayasansarawak.org.my/en/biasiswa/" target="_blank" rel="noopener noreferrer">Yayasan Sarawak</a></li>
+    <li><a href="https://www.bnm.gov.my/careers/scholarships" target="_blank" rel="noopener noreferrer">Bank Negara Malaysia</a></li>
+    <li><a href="https://www.yayasanbankrakyat.com.my/index.php/ppbu/" target="_blank" rel="noopener noreferrer">Yayasan Bank Rakyat</a></li>
+    <li><a href="https://penajaan.jpa.gov.my/" target="_blank" rel="noopener noreferrer">Jabatan Perkhidmatan Awam (PG)</a></li>
+    <li><a href="https://sppnk.kedah.gov.my/ipinjam/" target="_blank" rel="noopener noreferrer">Lembaga Biasiswa Negeri Kedah</a></li>
+    <li><a href="https://yayasanperak.gov.my/v7/" target="_blank" rel="noopener noreferrer">Yayasan Negeri Perak</a></li>
+    <li><a href="https://ibita.penang.gov.my/" target="_blank" rel="noopener noreferrer">Kerajaan Negeri Pulau Pinang</a></li>
+    <li><a href="https://danapendidikan.selangor.gov.my/" target="_blank" rel="noopener noreferrer">Kerajaan Negeri Selangor</a></li>
+    <li><a href="https://maybankfoundation.com/what-we-do/our-pillars/education/maybank-groups-scholarship-programme/" target="_blank" rel="noopener noreferrer">Maybank Group Scholarship</a></li>
+    <li><a href="https://www.nestle.com.my/jobs/students-graduates" target="_blank" rel="noopener noreferrer">Nestle Products Sdn. Bhd.</a></li>
+    <li><a href="https://www.pnb.com.my/en" target="_blank" rel="noopener noreferrer">Permodalan Nasional Berhad</a></li>
+    <li><a href="https://portal.mains.gov.my/" target="_blank" rel="noopener noreferrer">Majlis Agama Islam Negeri Sembilan</a></li>
+    <li><a href="https://educationsponsorship.petronas.com.my/" target="_blank" rel="noopener noreferrer">Petronas Nasional Berhad</a></li>
+    <li><a href="https://www.yayasansimedarby.com/" target="_blank" rel="noopener noreferrer">Yayasan Sime Darby</a></li>
+
+    <li><a href="https://tapem.melaka.gov.my/" target="_blank" rel="noopener noreferrer">Tabung Amanah Pendidikan Negeri Melaka</a></li>
+    <li><a href="https://www.angkasa.coop/" target="_blank" rel="noopener noreferrer">Tabung Pinjaman Pendidikan ANGKASA</a></li>
+    <li><a href="https://yakin.kelantan.gov.my/" target="_blank" rel="noopener noreferrer">Yayasan Kelantan Darul Naim</a></li>
+    <li><a href="https://www.yns.gov.my/v7/ms/bahagian/pendidikan/pinjaman" target="_blank" rel="noopener noreferrer">Yayasan Negeri Sembilan</a></li>
+    <li><a href="https://www.yp.org.my/maklumat-biasiswa/" target="_blank" rel="noopener noreferrer">Yayasan Pahang</a></li>
+    <li><a href="https://bantuan-ypj.com/" target="_blank" rel="noopener noreferrer">Yayasan Pelajaran Johor</a></li>
+    <li><a href="https://yayasanselangor.org.my/pinjaman-pelajaran-2/" target="_blank" rel="noopener noreferrer">Yayasan Selangor</a></li>
+    <li><a href="https://ytm.tm.com.my/scholarships-future-leader" target="_blank" rel="noopener noreferrer">Yayasan Telekom Malaysia</a></li>
+    <li><a href="https://gamuda.com/yayasan-gamuda/scholarship/" target="_blank" rel="noopener noreferrer">Yayasan Gamuda</a></li>
+    <li><a href="https://www.yp.org.my/maklumat-biasiswa/" target="_blank" rel="noopener noreferrer">Yayasan Pahang – Biasiswa Tahfiz Profesional</a></li>
+    <li><a href="https://www.moh.gov.my/" target="_blank" rel="noopener noreferrer">Kementerian Kesihatan Malaysia</a></li>
+    <li><a href="https://biasiswa.mohe.gov.my/MyBrainSc/" target="_blank" rel="noopener noreferrer">Kementerian Pengajian Tinggi – My BrainSc</a></li>
+    <li><a href="https://www.yp.org.my/maklumat-biasiswa/" target="_blank" rel="noopener noreferrer">Yayasan Pahang – Skim Pelajar Cemerlang</a></li>
+    <li><a href="https://www.islam.gov.my/" target="_blank" rel="noopener noreferrer">Jabatan Kemajuan Islam Malaysia (JAKIM)</a></li>
+    <li><a href="https://www.yayasansabahgroup.org.my/bm/education.cfm" target="_blank" rel="noopener noreferrer">Yayasan Sabah</a></li>
+    <li><a href="https://bkoku.mohe.gov.my/" target="_blank" rel="noopener noreferrer">Bantuan Kewangan OKU</a></li>
+    <li><a href="https://biasiswa.sabah.gov.my/" target="_blank" rel="noopener noreferrer">Jabatan Perkhidmatan Awam Negeri Sabah (JPAN)</a></li>
+  </ul>
+
+  <p class="small-note">
+    Some links direct to official provider portals or main organization pages. Students should verify current application dates and requirements directly with the scholarship provider.
+  </p>
+</div>
+</section>
+
+<section class="scholar-section">
+  <span class="section-label">For International Students</span>
+  <h2>Other Financial Assistance and Sponsors Available for International Students</h2>
+
+  <div class="scholar-list-box">
+    <p style="margin-bottom:20px;">
+      Scholarships for international students are generally provided by third parties,
+      embassies, ministries, foundations, or international organizations.
+    </p>
+
+    <ul class="single-list">
+      <li><a href="https://escholy-my.com/" target="_blank" rel="noopener noreferrer">Embassy of Libya</a></li>
+      <li><a href="https://my.saudiembassy.sa/en/Embassy/Pages/ContactInfo.aspx" target="_blank" rel="noopener noreferrer">Royal Embassy of Saudi Arabia</a></li>
+      <li><a href="https://mohe.gov.mv/index.php/scholarship-loan" target="_blank" rel="noopener noreferrer">Ministry of Education, Maldives</a></li>
+      <li><a href="https://biasiswa.mohe.gov.my/INTER/index.php" target="_blank" rel="noopener noreferrer">Malaysian International Scholarship (MIS) - MOHE</a></li>
+      <li><a href="https://www.yayasankhazanah.com.my/" target="_blank" rel="noopener noreferrer">Yayasan Khazanah</a></li>
+      <li><a href="https://kualalumpur.mfa.gov.af/" target="_blank" rel="noopener noreferrer">Embassy of Islamic Republic of Afghanistan</a></li>
+      <li><a href="https://almuntadatrust.org/" target="_blank" rel="noopener noreferrer">Al-Muntada Al-Islami</a></li>
+      <li><a href="https://www.turkiyeburslari.gov.tr/" target="_blank" rel="noopener noreferrer">Ministry of National Education, The Republic of Turkey</a></li>
+      <li><a href="https://www.mora.gov.bn/" target="_blank" rel="noopener noreferrer">Jabatan Pengajian Islam Brunei</a></li>
+      <li><a href="https://hadhramout-foundation.org/en/our-programs/scholarships-and-training-program/" target="_blank" rel="noopener noreferrer">Hadhramout Establishment for Human Development</a></li>
+      <li><a href="https://www.isdb.org/scholarships" target="_blank" rel="noopener noreferrer">Islamic Development Bank (IDB)</a></li>
+      <li><a href="https://www.edu.gov.qa/en/Content/Scholarshipsdepartment" target="_blank" rel="noopener noreferrer">Ministry of Higher Education, Qatar</a></li>
+      <li><a href="https://mohe.gov.af/en" target="_blank" rel="noopener noreferrer">Ministry of Higher Education (MOHE), Afghanistan</a></li>
+      <li><a href="https://pmo.gov.gm/scholarships" target="_blank" rel="noopener noreferrer">Personnel Management Office, Republic of Gambia</a></li>
+    </ul>
+
+    <p class="small-note">
+      International students should verify requirements directly with their embassy,
+      ministry, sponsor, or the relevant scholarship provider.
+    </p>
+  </div>
+</section>
+
+<section class="scholar-section">
+  <h2>How ScholarMatch Uses This Information</h2>
+
+  <div class="info-grid">
+    <div class="card info-card">
+      <h3>Main ML Recommendation</h3>
+      <p>
+        The machine learning model currently predicts one main recommendation among
+        MARA, PTPTN, and JPA based on student profile inputs.
+      </p>
+    </div>
+
+    <div class="card info-card">
+      <h3>Additional Scholarship References</h3>
+      <p>
+        This page provides extra scholarship links for students who want to explore
+        more options beyond the main recommendation result.
+      </p>
+    </div>
+
+    <div class="card info-card">
+      <h3>Future Enhancement</h3>
+      <p>
+        Future versions may include nationality, sponsor type, scholarship category,
+        and student status to support recommendations for international students.
+      </p>
+    </div>
+  </div>
+</section>
+
+<br>
+
+<div class="card">
+  <h3>Use ScholarMatch Finder</h3>
+  <p>
+    To receive a personalized recommendation from the current ML model, proceed to the
+    ScholarMatch Finder page.
+  </p>
+  <br>
+  <a href="{{ url_for('recommendation') }}" class="btn btn-green">
+    Start Recommendation
+  </a>
+</div>
+
+{% endblock %}

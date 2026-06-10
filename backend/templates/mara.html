@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .scholar-hero {
+    background: linear-gradient(rgba(31,77,63,0.88), rgba(31,77,63,0.88)),
+                url("{{ url_for('static', filename='mara.png') }}");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 70px 35px;
+    border-radius: 18px;
+    margin-bottom: 35px;
+  }
+
+  .scholar-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #c28f2c;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .info-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+  }
+
+  .doc-list li,
+  .check-list li {
+    margin-bottom: 10px;
+  }
+
+  .notice-box {
+    background: #eef8f4;
+    border-left: 6px solid #1f4d3f;
+  }
+
+  @media(max-width: 850px) {
+    .info-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="scholar-hero">
+  <span class="tag">Scholarship / Education Assistance</span>
+  <h1>MARA</h1>
+  <p>
+    MARA provides education sponsorship and financial assistance opportunities for eligible Malaysian students.
+  </p>
+</section>
+
+<div class="info-layout">
+
+  <div>
+    <div class="card notice-box">
+      <h3>Announcement</h3>
+      <p>
+        MARA education sponsorship is commonly considered by students who require financial support
+        and meet the required academic and eligibility conditions. Students are advised to refer to
+        the official MARA website for the most updated intake announcements and application dates.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>General Eligibility</h3>
+      <ul class="check-list">
+        <li>Malaysian citizen.</li>
+        <li>Good academic performance.</li>
+        <li>Priority may be given to students from eligible income backgrounds.</li>
+        <li>Must meet specific programme or field requirements set by MARA.</li>
+        <li>Must submit complete supporting documents during application.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Required Documents</h3>
+      <ul class="doc-list">
+        <li>Copy of identification card.</li>
+        <li>Academic transcript or latest examination result.</li>
+        <li>University offer letter or confirmation letter.</li>
+        <li>Household income proof or salary statement.</li>
+        <li>Co-curricular or achievement certificates, if applicable.</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h3>Scholarship Summary</h3>
+      <p><strong>Provider:</strong> MARA</p>
+      <p><strong>Type:</strong> Education sponsorship / financial assistance</p>
+      <p><strong>Focus:</strong> Academic performance and financial background</p>
+      <p><strong>Suitable For:</strong> Students who meet MARA eligibility requirements</p>
+    </div>
+
+    <div class="card">
+      <h3>Official Link</h3>
+      <p>
+        Visit the official MARA website for the latest application details.
+      </p>
+      <a href="https://www.mara.gov.my" target="_blank" class="btn">
+        Visit MARA Website
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Try Recommendation</h3>
+      <p>
+        Check whether MARA is suitable for your student profile.
+      </p>
+      <a href="{{ url_for('recommendation') }}" class="btn btn-green">
+        Use ScholarMatch Finder
+      </a>
+    </div>
+  </aside>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .scholar-hero {
+    background: linear-gradient(rgba(31,77,63,0.88), rgba(31,77,63,0.88)),
+                url("{{ url_for('static', filename='ptptn.png') }}");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 70px 35px;
+    border-radius: 18px;
+    margin-bottom: 35px;
+  }
+
+  .scholar-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #c28f2c;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .info-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+  }
+
+  .doc-list li,
+  .check-list li {
+    margin-bottom: 10px;
+  }
+
+  .notice-box {
+    background: #eef8f4;
+    border-left: 6px solid #1f4d3f;
+  }
+
+  @media(max-width: 850px) {
+    .info-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="scholar-hero">
+  <span class="tag">Education Loan / Financial Assistance</span>
+  <h1>PTPTN Loan</h1>
+  <p>
+    PTPTN provides education financing assistance to Malaysian students pursuing higher education.
+  </p>
+</section>
+
+<div class="info-layout">
+
+  <div>
+    <div class="card notice-box">
+      <h3>Announcement</h3>
+      <p>
+        PTPTN education financing is commonly used by Malaysian university students to support
+        tuition fees and study-related expenses. Students are advised to check the official PTPTN
+        website for updated application procedures, repayment information, and eligibility terms.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>General Eligibility</h3>
+      <ul class="check-list">
+        <li>Malaysian citizen.</li>
+        <li>Registered as a student in an eligible higher education institution.</li>
+        <li>Must meet PTPTN application requirements.</li>
+        <li>Household income may influence financing amount or eligibility category.</li>
+        <li>Must submit complete application and supporting documents.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Required Documents</h3>
+      <ul class="doc-list">
+        <li>Copy of identification card.</li>
+        <li>University offer letter or study confirmation letter.</li>
+        <li>Bank account details.</li>
+        <li>Household income information, if required.</li>
+        <li>Other supporting documents requested by PTPTN.</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h3>Scholarship Summary</h3>
+      <p><strong>Provider:</strong> PTPTN</p>
+      <p><strong>Type:</strong> Education loan / financial assistance</p>
+      <p><strong>Focus:</strong> Study financing support</p>
+      <p><strong>Suitable For:</strong> Students requiring education financing</p>
+    </div>
+
+    <div class="card">
+      <h3>Official Link</h3>
+      <p>
+        Visit the official PTPTN website for the latest application details.
+      </p>
+      <a href="https://www.ptptn.gov.my" target="_blank" class="btn">
+        Visit PTPTN Website
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Try Recommendation</h3>
+      <p>
+        Check whether PTPTN is suitable for your student profile.
+      </p>
+      <a href="{{ url_for('recommendation') }}" class="btn btn-green">
+        Use ScholarMatch Finder
+      </a>
+    </div>
+  </aside>
+
+</div>
+
+{% endblock %}
