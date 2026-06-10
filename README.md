@@ -98,14 +98,15 @@ ScholarMatch/
 │   ├── ptptn.html
 │   ├── jpa.html
 │   ├── recommendation.html
-│   └── result.html
+│   └── scholar.html
 │
 └── static/
     ├── style.css
     ├── mara.png
     ├── ptptn.png
     ├── jpa.png
-    └── images/
+    ├── logo.png
+    └── script.js
 ```
 
 ---
@@ -148,7 +149,7 @@ mara.html
 ptptn.html
 jpa.html
 recommendation.html
-result.html
+scholar.html
 ```
 
 Each file has a specific purpose:
@@ -160,7 +161,7 @@ Each file has a specific purpose:
 | `ptptn.html`          | Information page for PTPTN                            |
 | `jpa.html`            | Information page for JPA                              |
 | `recommendation.html` | Form page where users enter their details             |
-| `result.html`         | Page that displays the recommended scholarship result |
+| `scholar.html`        | Page that displays all scholarhips available in IIUM  |
 
 ---
 
